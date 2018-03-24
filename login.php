@@ -1,4 +1,6 @@
-<?PHP ?>
+<?PHP 
+    require_once  'Controller/Login.php';
+?>
 
 <!DOCTYPE html>
 <html class="no-js">
@@ -34,7 +36,7 @@
                 </div>
             <div class="contact-form col-md-6 wow fadeInUp" style="width: 100%;" data-wow-duration="500ms" data-wow-delay="300ms">
                 
-                <form id="contact-form" method="post" action="controller/Login.php" class="form-login" role="form" style="text-align: center;width: 425px;margin: 0 auto;">
+                <form id="contact-form-login" method="post" action="" class="form-login" role="form" style="text-align: center;width: 425px;margin: 0 auto;">
                     <div class="form-group">
                         <input type="text" placeholder="Ingrese su usuario" class="form-control" name="name" id="name">
                     </div>
@@ -45,11 +47,11 @@
                     <div id="mail-success" class="success">
                         Thank you. The Mailman is on His Way :)
                     </div>
-                    <div id="mail-fail" class="error">
-                        Sorry, don't know what happened. Try later :(
+                    <div id="mail-fail" class="error" <?PHP if ($validateError == TRUE) {?>style="display: block;" <?php } ELSE {?>style="display: none;"<?php }  ?>>
+                        <?PHP echo $msjError; ?> 
                     </div>
                     <div id="cf-submit">
-                        <input type="submit" id="contact_submit_login" class="btn btn-transparent" value="Ingresar">
+                        <input type="submit" id="contact_submit_login" name="contact_submit_login" class="btn btn-transparent" value="Ingresar">
                     </div>						
                 </form>
             </div>
@@ -61,6 +63,7 @@
         <script src="js/jquery-1.12.2.min.js"></script>
         <!-- Bootstrap 3.1 -->
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/adminitrator.js"></script>
         
         
     </body>
