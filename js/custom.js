@@ -222,62 +222,7 @@ jQuery(function ($) { "use strict";
 			});
 		}
 	});
-           
-        $('#contact-submit-login').click(function (e) {
-                console.log("paso por aqui")
-		//stop the form from being submitted
-		e.preventDefault();
-
-		/* declare the variables, var error is the variable that we use on the end
-		to determine if there was an error or not */
-		var error = false;
-		var name = $('#name').val();
-		var pass = $('#pass').val();
-		var message = $('#message').val();
-
-		if (name.length == 0) {
-			var error = true;
-			$('#name').css("border-color", "#D8000C");
-		} else {
-			$('#name').css("border-color", "#666");
-		}
-		if (pass.length == 0 ) {
-			var error = true;
-			$('#pass').css("border-color", "#D8000C");
-		} else {
-			$('#pass').css("border-color", "#666");
-		}
-	
-
-		//now when the validation is done we check if the error variable is false (no errors)
-		if (error == false) {
-			//disable the submit button to avoid spamming
-			//and change the button text to Sending...
-			/*$('#contact-submit').attr({
-				'disabled': 'false',
-				'value': 'Sending...'
-			});
-
-			/* using the jquery's post(ajax) function and a lifesaver
-			function serialize() which gets all the data from the form
-			we submit it to send_email.php */
-			/*$.post("sendmail.php", $("#contact-form").serialize(), function (result) {
-				//and after the ajax request ends we check the text returned
-				if (result == 'sent') {
-					//if the mail is sent remove the submit paragraph
-					$('#cf-submit').remove();
-					//and show the mail success div with fadeIn
-					$('#mail-success').fadeIn(500);
-				} else {
-					//show the mail failed div
-					$('#mail-fail').fadeIn(500);
-					//re enable the submit button by removing attribute disabled and change the text back to Send The Message
-					$('#contact-submit').removeAttr('disabled').attr('value', 'Send The Message');
-				}
-			});*/
-                        console.log("Paso por aqui");
-		}
-	});
+        
 
 
 	/* ========================================================================= */

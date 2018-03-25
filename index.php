@@ -1,4 +1,6 @@
-<?PHP ?>
+<?PHP 
+    require_once 'Controller/SearchCompany.php';
+?>
 
 <!DOCTYPE html>
 <html class="no-js">
@@ -706,15 +708,15 @@
                         <div class="contact-details">
                             <div class="con-info clearfix">
                                 <i class="fa fa-home fa-lg"></i>
-                                <span>Lorem ipsum dolor sit amet</span>
+                                <span><?php echo $dataCompany['address'];?></span>
                             </div>
                             <div class="con-info clearfix">
                                 <i class="fa fa-phone fa-lg"></i>
-                                <span>Phone: +880-31-000-000</span>
+                                <span>Celular: <?php echo $dataCompany['phone'];?></span>
                             </div>						
                             <div class="con-info clearfix">
                                 <i class="fa fa-envelope fa-lg"></i>
-                                <span>Email: hello@gmail.com</span>
+                                <span>Email: <?php echo $dataCompany['email'];?></span>
                             </div>
                         </div>
                     </div>
@@ -753,11 +755,11 @@
                     <div class="col-lg-12">
                         <div class="social-icon">
                             <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <?php { if ($dataCompany['facebook'] != '')?><li><a href="<?php echo $dataCompany['facebook']?>"><i class="fa fa-facebook"></i></a></li><?php }  ?>
+                                <?php { if ($dataCompany['twitter'] != '')?><li><a href="#<?php echo $dataCompany['twitter']?>"><i class="fa fa-twitter"></i></a></li><?php }  ?>
+                          
+                                <?php { if ($dataCompany['youtube'] != '')?><li><a href="#<?php echo $dataCompany['youtube']?>"><i class="fa fa-youtube"></i></a></li><?php }  ?>
+                                <?php { if ($dataCompany['instagram'] != '')?><li><a href="#<?php echo $dataCompany['instagram']?>"><i class="fa fa-instagram"></i></a></li><?php }  ?>
                             </ul>
                         </div>
                         <div class="copyright text-center">
