@@ -1,6 +1,8 @@
 <?PHP
 require_once 'Controller/SearchUser.php';
 require_once 'Controller/UpdateCompany.php';
+require_once 'Controller/saveImageList.php';
+require_once 'Controller/getListImage.php';
 ?>
 
 <!DOCTYPE html>
@@ -18,8 +20,6 @@ require_once 'Controller/UpdateCompany.php';
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <!-- Animate.css -->
         <link rel="stylesheet" href="css/animate.css">
-        <!-- Owl Carousel -->
-        <link rel="stylesheet" href="css/owl.carousel.css">
         <!-- Grid Component css -->
         <link rel="stylesheet" href="css/component.css">
         <!-- Slit Slider css -->
@@ -60,8 +60,8 @@ require_once 'Controller/UpdateCompany.php';
                 <nav class="collapse navbar-collapse navbar-right" role="Navigation">
                     <ul id="nav" class="nav navbar-nav">
                         <li><a href="#about">Informacion</a></li>
-                        <li><a href="#services">Servicios</a></li>
                         <li><a href="#showcase">Portfolio</a></li>
+                        <li><a href="#services">Servicios</a></li>
                         <li><a href="#our-team">Equipo</a></li>
                         <li><a href="#blog">Blog</a></li>
                         <li><a href="#contact-us">Contactanos</a></li>
@@ -108,7 +108,7 @@ require_once 'Controller/UpdateCompany.php';
                                 </div>
                             </div>
                             <div id="cf-submit">
-                                <input type="submit" id="contact-submit-save-information" name="contact-submit-save-information" class="btn btn-transparent" value="Enviar">
+                                <input type="submit" id="contact-submit-save-information" name="contact-submit-save-information" class="btn btn-transparent" value="Guardar">
                             </div>				
                         </form>
                     
@@ -117,7 +117,7 @@ require_once 'Controller/UpdateCompany.php';
 
         </section>
 
-    <section id="main-features">
+    <!--<section id="main-features">
         <div class="container">
             <div class="row">
                 <div id="features">
@@ -137,9 +137,9 @@ require_once 'Controller/UpdateCompany.php';
                 </div>					
             </div>
         </div>
-    </section>
+    </section>-->
 
-    <section id="counter" class="parallax-section">
+    <!--<section id="counter" class="parallax-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInDown" data-wow-duration="500ms">
@@ -181,8 +181,45 @@ require_once 'Controller/UpdateCompany.php';
                 </div>
             </div>
         </div>
-    </section>		
+    </section>-->		
 
+    <section id="showcase">
+        <div class="container">
+            <div class="row wow fadeInDown" data-wow-duration="500ms">
+                <div class="col-lg-12">
+                    <div class="title text-center">
+                        <h2>Cargar <span class="color">Imagen</span></h2>
+                        <div class="border"></div>
+                    </div>
+                    <form  id="contact-form-save-listImage" method="post" action="" role="form" accept-charset="utf-8">
+                        <div class="contact-form col-md-6 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+
+                            <div class="form-group">
+                                <input type="text" placeholder="Ingrese Tipo de Imagen" class="form-control" name="imageList" id="imageList" >
+                            </div>
+                        </div>
+                        <div class="contact-form col-md-6 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+                            <div id="cf-submit">
+                                <input type="submit" id="submit-save-imageList" name="submit-save-imageList" class="btn btn-transparent" value="Guardar" style="margin-top: 0">
+                            </div>
+                        </div>
+                    </form>    
+                    <div class="portfolio-filter clearfix">
+                        <ul class="text-center" id="containerListImage">
+                            <?php  foreach($listImage as $listImage):?>
+                            <li><a href="#" class="filter" data-filter="<?php echo $listImage['name'];?>"><?php echo $listImage['name'];?></a></li>
+                             <?php endforeach; ?>
+                           
+                        </ul>
+                    </div>						
+                </div>
+            </div>
+        </div>
+        <div class="portfolio-item-wrapper wow fadeInUp" data-wow-duration="500ms">
+            
+        </div>
+    </section>
+    
     <section id="services" class="bg-one">
         <div class="container">
             <div class="row">
@@ -246,166 +283,8 @@ require_once 'Controller/UpdateCompany.php';
                 </article>						
             </div>
         </div>
-    </section>
-
-    <section id="showcase">
-        <div class="container">
-            <div class="row wow fadeInDown" data-wow-duration="500ms">
-                <div class="col-lg-12">
-                    <div class="title text-center">
-                        <h2>Nuestros <span class="color">Trabajos</span></h2>
-                        <div class="border"></div>
-                    </div>
-                    <div class="portfolio-filter clearfix">
-                        <ul class="text-center">
-                            <li><a href="javascript:void(0)" class="filter" data-filter="all">Todos</a></li>
-                            <li><a href="javascript:void(0)" class="filter" data-filter=".app">Telefonos</a></li>
-                            <li><a href="javascript:void(0)" class="filter" data-filter=".web">Tables</a></li>
-                            <li><a href="javascript:void(0)" class="filter" data-filter=".photoshop">Photoshop</a></li>
-                            <li><a href="javascript:void(0)" class="filter" data-filter=".illustrator">Illustrator</a></li>
-                        </ul>
-                    </div>						
-                </div>
-            </div>
-        </div>
-        <div class="portfolio-item-wrapper wow fadeInUp" data-wow-duration="500ms">
-            <ul id="og-grid" class="og-grid">
-                <li class="mix app">
-                    <a href="javascript:void(0)" data-largesrc="img/portfolio/1.png" data-title="Iphone" data-description="Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.">
-                        <img src="img/portfolio/1.png" alt="telefono">
-                        <div class="hover-mask">
-                            <h3>Iphone</h3>
-                            <span>
-                                <i class="fa fa-plus fa-2x"></i>
-                            </span>
-                        </div>
-                    </a>
-                </li>
-                <li class="mix web">
-                    <a href="javascript:void(0)" data-largesrc="img/portfolio/2.png" data-title="Table" data-description="Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.">
-                        <img src="img/portfolio/2.png" alt="table">
-                        <div class="hover-mask">
-                            <h3>table</h3>
-                            <span>
-                                <i class="fa fa-plus fa-2x"></i>
-                            </span>
-                        </div>
-                    </a>
-                </li>
-                <li class="mix photoshop">
-                    <a href="javascript:void(0)" data-largesrc="img/portfolio/3.png" data-title="Lorem ipsum dolor" data-description="Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.">
-                        <img src="img/portfolio/3.png" alt="">
-                        <div class="hover-mask">
-                            <h3>Lorem ipsum dolor</h3>
-                            <span>
-                                <i class="fa fa-plus fa-2x"></i>
-                            </span>
-                        </div>
-                    </a>
-                </li>
-                <li class="mix illustrator">
-                    <a href="javascript:void(0)" data-largesrc="img/portfolio/1.png" data-title="Lorem ipsum dolor" data-description="Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.">
-                        <img src="img/portfolio/1.png" alt="">
-                        <div class="hover-mask">
-                            <h3>Lorem ipsum dolor</h3>
-                            <span>
-                                <i class="fa fa-plus fa-2x"></i>
-                            </span>
-                        </div>
-                    </a>
-                </li>
-                <li class="mix app">
-                    <a href="javascript:void(0)" data-largesrc="img/portfolio/2.png" data-title="Lorem ipsum dolor" data-description="Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.">
-                        <img src="img/portfolio/2.png" alt="">
-                        <div class="hover-mask">
-                            <h3>Lorem ipsum dolor</h3>
-                            <span>
-                                <i class="fa fa-plus fa-2x"></i>
-                            </span>
-                        </div>
-                    </a>
-                </li>
-                <li class="mix app">
-                    <a href="javascript:void(0)" data-largesrc="img/portfolio/3.png" data-title="Lorem ipsum dolor" data-description="Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.">
-                        <img src="img/portfolio/3.png" alt="">
-                        <div class="hover-mask">
-                            <h3>Lorem ipsum dolor</h3>
-                            <span>
-                                <i class="fa fa-plus fa-2x"></i>
-                            </span>
-                        </div>	
-                    </a>
-                </li>
-                <li class="mix web">
-                    <a href="javascript:void(0)" data-largesrc="img/portfolio/1.png" data-title="Lorem ipsum dolor" data-description="Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.">
-                        <img src="img/portfolio/1.png" alt="">
-                        <div class="hover-mask">
-                            <h3>Lorem ipsum dolor</h3>
-                            <span>
-                                <i class="fa fa-plus fa-2x"></i>
-                            </span>
-                        </div>	
-                    </a>
-                </li>
-                <li class="mix photoshop">
-                    <a href="javascript:void(0)" data-largesrc="img/portfolio/2.png" data-title="Lorem ipsum dolor" data-description="Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.">
-                        <img src="img/portfolio/2.png" alt="">
-                        <div class="hover-mask">
-                            <h3>Lorem ipsum dolor</h3>
-                            <span>
-                                <i class="fa fa-plus fa-2x"></i>
-                            </span>
-                        </div>
-                    </a>
-                </li>
-                <li class="mix photoshop">
-                    <a href="javascript:void(0)" data-largesrc="img/portfolio/3.png" data-title="Lorem ipsum dolor" data-description="Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.">
-                        <img src="img/portfolio/3.png" alt="">
-                        <div class="hover-mask">
-                            <h3>Lorem ipsum dolor</h3>
-                            <span>
-                                <i class="fa fa-plus fa-2x"></i>
-                            </span>
-                        </div>
-                    </a>
-                </li>
-                <li class="mix illustrator">
-                    <a href="javascript:void(0)" data-largesrc="img/portfolio/1.png" data-title="Lorem ipsum dolor" data-description="Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.">
-                        <img src="img/portfolio/1.png" alt="">
-                        <div class="hover-mask">
-                            <h3>Lorem ipsum dolor</h3>
-                            <span>
-                                <i class="fa fa-plus fa-2x"></i>
-                            </span>
-                        </div>	
-                    </a>
-                </li>
-                <li class="mix web">
-                    <a href="javascript:void(0)" data-largesrc="img/portfolio/2.png" data-title="Lorem ipsum dolor" data-description="Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.">
-                        <img src="img/portfolio/2.png" alt="">
-                        <div class="hover-mask">
-                            <h3>Lorem ipsum dolor</h3>
-                            <span>
-                                <i class="fa fa-plus fa-2x"></i>
-                            </span>
-                        </div>
-                    </a>
-                </li>
-                <li class="mix app">
-                    <a href="javascript:void(0)" data-largesrc="img/portfolio/3.png" data-title="Lorem ipsum dolor" data-description="Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.">
-                        <img src="img/portfolio/3.png" alt="">
-                        <div class="hover-mask">
-                            <h3>Lorem ipsum dolor</h3>
-                            <span>
-                                <i class="fa fa-plus fa-2x"></i>
-                            </span>
-                        </div>
-                    </a>
-                </li>		
-            </ul>
-        </div>
-    </section>
-
+    </section>    
+        
     <section id="team-skills" class="parallax-section">
         <div class="container">
             <div class="row wow fadeInDown" data-wow-duration="500ms">
@@ -741,10 +620,6 @@ require_once 'Controller/UpdateCompany.php';
     <!-- Slitslider -->
     <script src="js/jquery.slitslider.js"></script>
     <script src="js/jquery.ba-cond.min.js"></script>
-    <!-- Parallax -->
-    <script src="js/jquery.parallax-1.1.3.js"></script>
-    <!-- Owl Carousel -->
-    <script src="js/owl.carousel.min.js"></script>
     <!-- Portfolio Filtering -->
     <script src="js/jquery.mixitup.min.js"></script>
     <!-- Custom Scrollbar -->
@@ -765,9 +640,6 @@ require_once 'Controller/UpdateCompany.php';
     <script src="js/jquery.fitvids.js"></script>
     <!-- Grid js -->
     <script src="js/grid.js"></script>
-    <!-- Instafeed -->
-    <script src="js/instafeed/instafeed.min.js"></script>
-    <script src="js/instafeed/index.js"></script>
     <!-- Custom js -->
     <script src="js/adminitrator.js"></script>
 </body>

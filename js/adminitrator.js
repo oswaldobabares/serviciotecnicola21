@@ -1,26 +1,12 @@
 
-
 jQuery(function ($) {
     "use strict";
-
-    /* ========================================================================= */
-    /*	Page Preloader
-     /* ========================================================================= */
 
     window.onload = function () {
         document.getElementById('loading-mask').style.display = 'none';
     }
 
-    /* =========================================================================== */
-    /*	FitVids js
-     /* =========================================================================== */
-
     $(".media-wrapper").fitVids();
-
-
-    /* ========================================================================= */
-    /*	Nice Scroll - Custom Scrollbar
-     /* ========================================================================= */
 
     var nice = $("html").niceScroll({
         cursorborderradius: 0,
@@ -30,12 +16,6 @@ jQuery(function ($) {
         zindex: 9999,
         cursorborder: 0,
     });
-
-
-    /* ========================================================================= */
-    /*	Scroll Up / Back to top
-     /* ========================================================================= */
-
     $(window).scroll(function () {
         if ($(window).scrollTop() > 400) {
             $("#scrollUp").fadeIn(200);
@@ -50,27 +30,7 @@ jQuery(function ($) {
         }, 1500, 'easeInOutExpo');
     });
 
-
-    /* ========================================================================= */
-    /*	Post image slider
-     /* ========================================================================= */
-
-    $("#post-thumb, #gallery-post").owlCarousel({
-
-        navigation: true,
-        pagination: false,
-        slideSpeed: 800,
-        autoHeight: true,
-        paginationSpeed: 800,
-        singleItem: true,
-        navigationText: ["<i class='fa fa-angle-left fa-2x'></i>", "<i class='fa fa-angle-right fa-2x'></i>"]
-
-    });
-
-    /* ========================================================================= */
-    /*	Menu item highlighting
-     /* ========================================================================= */
-
+   
 
     $("#navigation").sticky({
         topSpacing: 0
@@ -85,12 +45,6 @@ jQuery(function ($) {
         easing: 'easeInOutExpo'
     });
 
-
-
-    /* ========================================================================= */
-    /*	Fix Slider Height
-     /* ========================================================================= */
-
     var slideHeight = $(window).height();
 
     $('#slitSlider, .sl-slider, .sl-content-wrapper').css('height', slideHeight);
@@ -99,12 +53,6 @@ jQuery(function ($) {
         'use strict',
                 $('#slitSlider, .sl-slider, .sl-content-wrapper').css('height', slideHeight);
     });
-
-
-
-    /* ========================================================================= */
-    /*	Timer count
-     /* ========================================================================= */
 
     (function () {
         var count = {
@@ -134,11 +82,6 @@ jQuery(function ($) {
         count.initialize();
     })();
 
-
-    /* ========================================================================= */
-    /*	Skills Chart
-     /* ========================================================================= */
-
     $(".chart").appear(function () {
         $(".chart").easyPieChart({
             easing: "easeOutBounce",
@@ -152,10 +95,6 @@ jQuery(function ($) {
         })
     });
 
-    /* ========================================================================= */
-    /*	Portfolio Filtering Hook
-     /* =========================================================================  */
-
     $('#og-grid').mixItUp(); // Portfolio filter
 
     Grid.init(); //Portfolio Grid Expand
@@ -164,7 +103,6 @@ jQuery(function ($) {
     $('#contact_submit_login').click(function (e) {
 
         e.preventDefault();
-
         var error = false;
         var name = $('#name').val();
         var pass = $('#pass').val();
@@ -189,35 +127,41 @@ jQuery(function ($) {
     });
 
     $('#contact-submit-save-information').click(function (e) {
-
-        //stop the form from being submitted
         e.preventDefault();
-
-        /* declare the variables, var error is the variable that we use on the end
-         to determine if there was an error or not */
         var error = false;
         var email = $('#email').val();
-
         if (email.indexOf('@') == '-1') {
             var error = true;
             $('#email').css("border-color", "#D8000C");
         } else {
             $('#email').css("border-color", "#666");
         }
-        //now when the validation is done we check if the error variable is false (no errors)
         if (error == false) {
 
-         /*   $.post("Controller/UpdateCompany.php", $("#contact-form-save-information").serialize(), function (result) {
-                //and after the ajax request ends we check the text returned
-                console.log(result);
-                if (result == 'sent') {
-                    console.log("llego");
-                } else {
-                    
-                }
-            });*/
             $('#contact-form-save-information').submit();
         }
+    });
+    
+    $('#submit-save-imageList').click(function (e) {
+        e.preventDefault();
+        var error = false;
+        var imageText = $('#imageList').val();
+       if (imageText.length == 0) {
+            var error = true;
+            $('#imageList').css("border-color", "#D8000C");
+        } else {
+            $('#imageList').css("border-color", "#666");
+        }
+        if (error == false) {
+
+         $.post("Controller/saveImageList.php", $("#contact-form-save-listImage").serialize(), function (result) {
+                console.log(result)
+                var li = '<li><a href="#" class="filter" data-filter=".'+imageText+'">'+imageText+'</a></li>'
+                    $('#containerListImage').append(li); 
+            });
+           
+        }
+        
     });
 
 
